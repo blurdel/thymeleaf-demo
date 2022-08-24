@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class IndexController {
 
-	@GetMapping("/")
+	@GetMapping("/demo")
 	public String index(Model model) {
 
 		model.addAttribute("message", "Thank you for visiting.");
