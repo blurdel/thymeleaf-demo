@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Thymeleaf Demo</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css">
+</head>
+
+<body class="container">
+
+    <h1 class="py-5">Thymeleaf Form handling Demo</h1>
+    
+    <form action="#" th:action="@{/users}" th:object="${userInfo}" method="post" class="col card p-3 mb-5">
+    
+        <div class="form-group">
+            <input type="checkbox" th:checked="${true}" th:field="*{enabled}" id="enabled" name="enabled"/><span th:utext="${'&ensp;'}"/><label for="enabled">Account Enabled</label>
+        </div>
+
+        <div class="form-group">
+            <input type="checkbox" th:checked="${false}" th:field="*{active}" id="active" name="active"/><span th:utext="${'&ensp;'}"/><label for="active">Account Active</label>
+        </div>
+
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input id="firstName" placeholder="Enter First Name" required type="text" th:field="*{firstName}" class="form-control"/>
+        </div>
+
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input id="lastName" placeholder="Enter Last Name" required type="text" th:field="*{lastName}" class="form-control"/>
+        </div>
+
+        <div class="form-group">
+            <label for="role">Role</label>
+            <select id="role" required th:field="*{role}" class="form-control ">
+                <option value="" hidden>Select a role</option>
+                <option th:each="role : ${T(com.blurdel.web.thymeleaf.entities.Role).values()}"
+                        th:value="${role}"
+                        th:text="${role}">
+                </option>
+            </select>
+        </div>
+        
+        <input type="submit" class="btn btn-primary" value="Create User">
+    </form>
+
+    <table class="table table-striped table-bordered">
+        <tr>
+            <th>ID</th>
+            <th>Enabled</th>
+            <th>Active</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Role</th>
+            <th>Created</th>
+            <td>Action</td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(userList)}">
+            <td colspan="5">No Records found.</td>
+        </tr>
+        <tr th:each="user : ${userList}">
+            <td th:text="${user.id}" />
+            <td th:text="${user.enabled}" />
+            <td th:text="${user.active}" />
+            <td th:text="${user.firstName}" />
+            <td th:text="${user.lastName}" />
+            <td th:text="${user.role}" />
+            <td th:text="${user.createdAt}" />
+            <td><a th:href="@{/users/delete/{id} (id=${user.id})}" class="btn btn-danger btn-sm">Delete</a></td>
+        </tr>
+    </table>
+    
+    <a th:href="@{/users/editall}" class="btn btn-primary btn-sm">Edit List</a>
+
+</body>
+</html>

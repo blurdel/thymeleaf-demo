@@ -16,8 +16,11 @@
         <h2>Save Employee</h2>
  
         <form action="#" th:action="@{/save}" th:object="${employee}" method="POST">
-        	<input type="text" th:field="*{name}"  placeholder="Name" class="form-control mb-4 col-4"> 
+        
+            <input type="text" th:field="*{name}"  placeholder="Name" class="form-control mb-4 col-4">
+        	 
             <input type="text" th:field="*{email}" placeholder="Email" class="form-control mb-4 col-4">
+            
             <input type="text" th:field="*{phone}" placeholder="Phone" class="form-control mb-4 col-4">
  
             <button type="submit" class="btn btn-info col-2">Save</button>

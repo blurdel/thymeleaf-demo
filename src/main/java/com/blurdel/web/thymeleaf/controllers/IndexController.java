@@ -14,4 +14,11 @@ public class IndexController {
 		return "index";
 	}
 	
+	@GetMapping("/styles")
+	public String styles(Model model) {
+		
+		model.addAttribute("message", "hi blurdel");
+		return "styles";
+	}
+	
 }
