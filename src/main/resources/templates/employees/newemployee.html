@@ -15,19 +15,25 @@
         <hr>
         <h2>Save Employee</h2>
  
-        <form action="#" th:action="@{/save}" th:object="${employee}" method="POST">
+        <form action="#" th:action="@{/employee/save}" th:object="${employee}" method="POST">
         
-            <input type="text" th:field="*{name}"  placeholder="Name" class="form-control mb-4 col-4">
+            <!-- Add hidden form field to handle update -->
+            <input type="hidden" th:field="*{id}" />
+        
+            <input type="text" th:field="*{name}"  required placeholder="Name" class="form-control mb-4 col-4">
+            <p th:if="${#fields.hasErrors('name')}" th:errorclass="error" th:errors="*{name}">*Required</p>
         	 
-            <input type="text" th:field="*{email}" placeholder="Email" class="form-control mb-4 col-4">
+            <input type="text" th:field="*{email}" required placeholder="Email" class="form-control mb-4 col-4">
+            <p th:if="${#fields.hasErrors('email')}" th:errorclass="error" th:errors="*{email}">*Required</p>
             
-            <input type="text" th:field="*{phone}" placeholder="Phone" class="form-control mb-4 col-4">
+            <input type="text" th:field="*{phone}" required placeholder="Phone" class="form-control mb-4 col-4">
+            <p th:if="${#fields.hasErrors('phone')}" th:errorclass="error" th:errors="*{phone}">*Required</p>
  
             <button type="submit" class="btn btn-info col-2">Save</button>
         </form>
  
         <hr>
-		<a th:href="@{/}">Back to List</a>
+		<a th:href="@{/employee}">Back to List</a>
     </div>
     
 </body>

@@ -18,9 +18,7 @@ public class WelcomeController {
 	private List<String> tasks = Arrays.asList("one", "two", "three", "four", "five");
 	
 	@GetMapping("/hello")
-	public String main(
-			@RequestParam(name = "name", required = false, defaultValue = "") String name, 
-			Model model) 
+	public String main(Model model, @RequestParam(name="name", required=false, defaultValue="") String name) 
 	{
 		model.addAttribute("message", name.length() > 0 ? name : message);
 		model.addAttribute("tasks", tasks);
