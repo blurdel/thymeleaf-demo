@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <title>Spring Boot Thymeleaf Demo</title>
+
+  <link rel="stylesheet" th:href="@{/css/reset.css}" type="text/css">
+  <link rel="stylesheet" th:href="@{/css/versions.css}" type="text/css">
+</head>
+<body>
+
+<h1>Spring Boot Thymeleaf Demo</h1>
+
+<table class="versions">
+  <tr>
+    <td class="label">Java Runtime</td>
+    <td class="value" th:text="${versions.jdkVersion}"></td>
+  </tr>
+  <tr>
+    <td class="label">Spring</td>
+    <td class="value" th:text="${versions.springVersion}"></td>
+  </tr>
+  <tr>
+    <td class="label">Spring Boot</td>
+    <td class="value" th:text="${versions.springBootVersion}"></td>
+  </tr>
+  <tr>
+    <td class="label">Thymeleaf</td>
+    <td class="value" th:text="${versions.thymeleafVersion}"></td>
+  </tr>
+  <tr>
+    <td class="label">Webserver</td>
+    <td class="value" th:text="${versions.serverInfo}"></td>
+  </tr>
+</table>
+
+</body>
+</html>

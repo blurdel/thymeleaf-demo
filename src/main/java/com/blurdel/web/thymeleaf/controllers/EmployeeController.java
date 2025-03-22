@@ -2,9 +2,9 @@ package com.blurdel.web.thymeleaf.controllers;
 
 import java.util.Optional;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,17 +17,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.blurdel.web.thymeleaf.model.Employee;
 import com.blurdel.web.thymeleaf.repositories.EmployeeRepository;
 
-
+@RequiredArgsConstructor
 @Controller
 @RequestMapping("/employee")
 public class EmployeeController {
 
-	@Autowired
-	private EmployeeRepository repo;
+	private final EmployeeRepository repo;
 
 	@GetMapping
 	public String viewHomePage(Model model) {
-		model.addAttribute("allemplist", repo.findAll());
+		model.addAttribute("employeeList", repo.findAll());
 		return "employees/index";
 	}
 

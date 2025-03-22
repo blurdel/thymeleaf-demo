@@ -15,12 +15,12 @@ public class WelcomeController {
 	@Value("${welcome.message}")
 	private String message;
 	
-	private List<String> tasks = Arrays.asList("one", "two", "three", "four", "five");
+	private final List<String> tasks = Arrays.asList("one", "two", "three", "four", "five");
 	
 	@GetMapping("/hello")
-	public String main(Model model, @RequestParam(name="name", required=false, defaultValue="") String name) 
+	public String getWelcome(Model model, @RequestParam(name="name", required=false, defaultValue="") String name)
 	{
-		model.addAttribute("message", name.length() > 0 ? name : message);
+		model.addAttribute("message", !name.isEmpty() ? name : message);
 		model.addAttribute("tasks", tasks);
 		return "welcome";		
 	}
