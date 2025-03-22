@@ -2,8 +2,9 @@ package com.blurdel.web.thymeleaf.controllers;
 
 import java.util.List;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,17 +18,12 @@ import com.blurdel.web.thymeleaf.entities.UserInfo;
 import com.blurdel.web.thymeleaf.entities.UserListDto;
 import com.blurdel.web.thymeleaf.services.UserService;
 
-
+@RequiredArgsConstructor
 @Controller
 @RequestMapping("/users")
 public class UserController {
 
 	private final UserService userService;
-
-	
-	public UserController(UserService userService) {
-		this.userService = userService;
-	}
 
 	@GetMapping
 	public String getAllUsers(Model model) {

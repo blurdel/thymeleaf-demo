@@ -9,14 +9,12 @@ public class IndexController {
 
 	@GetMapping("/demo")
 	public String index(Model model) {
-
 		model.addAttribute("message", "Thank you for visiting.");
 		return "index";
 	}
 	
 	@GetMapping("/styles")
 	public String styles(Model model) {
-		
 		model.addAttribute("message", "hi blurdel");
 		return "styles";
 	}
